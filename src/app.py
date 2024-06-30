@@ -36,6 +36,27 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        email = request.form['email']
+
+        try:
+            cur = db.connection.cursor()
+            query = (
+                'INSERT INTO users (username, password, email) VALUES (%s, %s, %s)')
+            cur.execute(query, (username, password, email))
+            db.connection.commit()
+            cur.close()
+            flash('Registro exitoso', 'succes')
+        except Exception as e:
+            flash(f'Error al registrar el usuario {e}')
+            db.connection.rollback()
+    return render_template('register.html')
+
+
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     app.run()
