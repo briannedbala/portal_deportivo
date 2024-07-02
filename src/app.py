@@ -57,6 +57,16 @@ def register():
     return render_template('register.html')
 
 
+@app.route('/teams')
+def teams():
+    return render_template('prueba_seleccion.html')
+
+
+# @app.route('/argentina')
+# def argentina_statistics():
+#     return render_template()
+
+
 if __name__ == '__main__':
     app.config.from_object(config['development'])
     app.run()
