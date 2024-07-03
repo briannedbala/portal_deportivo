@@ -27,7 +27,7 @@ def login():
         try:
             if user:
                 # Ingresar flash
-                return redirect('Bienvenido')
+                return redirect('/teams')
             else:
                 # Ingresar flash
                 return redirect('Error')
@@ -62,9 +62,24 @@ def teams():
     return render_template('prueba_seleccion.html')
 
 
-# @app.route('/argentina')
-# def argentina_statistics():
-#     return render_template()
+def obtener_jugadores():
+    conn = sqlite3.connect('jugadores.db')  # Cambia el nombre de tu base de datos si es necesario
+    cursor = conn.cursor()
+    cursor.execute("SELECT name, position, age, height, weight, nationality FROM user")
+    jugadores = cursor.fetchall()
+    conn.close()
+
+    jugadores_list = []
+    for jugador in jugadores:
+        jugadores_list.append({
+            'name': jugador[0],
+            'position': jugador[1],
+            'age': jugador[2],
+            'height': jugador[3],
+            'weight': jugador[4],
+            'nationality': jugador[5]
+        })
+    return jugadores_list
 
 
 if __name__ == '__main__':

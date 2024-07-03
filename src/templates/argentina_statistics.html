@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Jugadores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Lista de Jugadores</h2>
+        <table id="tablaJugadores">
+            <thead>
+                <tr>
+                    <th class="sortable" onclick="ordenarTabla(0)">Nombre</th>
+                    <th class="sortable" onclick="ordenarTabla(1)">Posición</th>
+                    <th class="sortable" onclick="ordenarTabla(2)">Edad</th>
+                    <th class="sortable" onclick="ordenarTabla(3)">Altura</th>
+                    <th class="sortable" onclick="ordenarTabla(4)">Peso</th>
+                    <th class="sortable" onclick="ordenarTabla(5)">Nacionalidad</th>
+                </tr>
+            </thead>
+            <tbody id="jugadoresBody">
+                <!-- Los datos se insertarán aquí mediante JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function obtenerDatos() {
+            const response = await fetch('/api/jugadores');
+            const data = await response.json();
+            cargarDatos(data);
+        }
+
+        function cargarDatos(data) {
+            const tbody = document.getElementById('jugadoresBody');
+            tbody.innerHTML = '';
+            data.forEach(jugador => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${jugador.name}</td>
+                    <td>${jugador.position}</td>
+                    <td>${jugador.age}</td>
+                    <td>${jugador.height}</td>
+                    <td>${jugador.weight}</td>
+                    <td>${jugador.nationality}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function ordenarTabla(n) {
+            const table = document.getElementById('tablaJugadores');
+            let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+            switching = true;
+            dir = "asc"; 
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[n];
+                    y = rows[i + 1].getElementsByTagName("TD")[n];
+                    if (dir == "asc") {
+                        if (n === 2 || n === 3 || n === 4) {
+                            if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    } else if (dir == "desc") {
+                        if (n === 2 || n === 3 || n === 4) {
+                            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                    switchcount++;
+                } else {
+                    if (switchcount == 0 && dir == "asc") {
+                        dir = "desc";
+                        switching = true;
+                    }
+                }
+            }
+        }
+
+        window.onload = obtenerDatos;
+    </script>
+</body>
+</html>
