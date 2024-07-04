@@ -12,52 +12,95 @@
         }
         .container {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
             padding: 20px;
         }
         .team {
             margin: 20px;
+            text-align: center;
         }
         .team img {
             width: 150px;
             height: 150px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
         }
     </style>
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
 </head>
 <body>
     <h1>Selecciones de Fútbol</h1>
     <div class="container">
         <div class="team">
-            <a href="https://www.fifa.com/es/associations/association/arg/" target="_blank">
-                <img src="/static/img/peru.png" alt="-">
+            <a href="https://www.fifa.com/es/associations/association/arg/">
+                <img src="/static/img/peru.png" alt="Peru">
             </a>
             <p>Peru</p>
+            <div class="buttons">
+                <button onclick="navigateTo('/peru_home')">Home</button>
+                <button onclick="navigateTo('/peru_stats')">Stats</button>
+                <button onclick="navigateTo('/peru_players')">Players</button>
+            </div>
         </div>
         <div class="team">
-            <a href="https://www.fifa.com/es/associations/association/bra/" target="_blank">
+            <a href="https://www.fifa.com/es/associations/association/bra/">
                 <img src="/static/img/uruguay.png" alt="Uruguay">
             </a>
             <p>Uruguay</p>
+            <div class="buttons">
+                <button onclick="navigateTo('/uruguay_home')">Home</button>
+                <button onclick="navigateTo('/uruguay_stats')">Stats</button>
+                <button onclick="navigateTo('/uruguay_players')">Players</button>
+            </div>
         </div>
         <div class="team">
-            <a href="https://www.fifa.com/es/associations/association/eng/" target="_blank">
+            <a href="/argentina_home">
                 <img src="/static/img/argentina.png" alt="Argentina">
             </a>
             <p>Argentina</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://www.afa.com.ar/es/')">Pag. oficial</button>
+                <button onclick="navigateTo('/argentina_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/argentina_players')">Jugadores</button>
+            </div>
         </div>
         <div class="team">
-            <a href="https://www.fifa.com/es/associations/association/fra/" target="_blank">
+            <a href="https://www.fifa.com/es/associations/association/fra/">
                 <img src="/static/img/brasil.png" alt="Brasil">
             </a>
             <p>Brasil</p>
+            <div class="buttons">
+                <button onclick="navigateTo('/brasil_home')">Home</button>
+                <button onclick="navigateTo('/brasil_stats')">Stats</button>
+                <button onclick="navigateTo('/brasil_players')">Players</button>
+            </div>
         </div>
         <div class="team">
-            <a href="https://www.fifa.com/es/associations/association/ger/" target="_blank">
-                <img src="/static/img/chile.png" alt="-">
+            <a href="https://www.fifa.com/es/associations/association/ger/">
+                <img src="/static/img/chile.png" alt="Chile">
             </a>
             <p>Chile</p>
+            <div class="buttons">
+                <button onclick="navigateTo('/chile_home')">Home</button>
+                <button onclick="navigateTo('/chile_stats')">Stats</button>
+                <button onclick="navigateTo('/chile_players')">Players</button>
+            </div>
         </div>
     </div>
 </body>

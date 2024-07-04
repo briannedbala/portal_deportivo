@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Deportivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #99cbff;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 0%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            margin-right: 40px;
+        }
+
+        .navbar .search-bar {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            max-width: 400px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .navbar .login-button {
+            background-color: #555;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .navbar .login-button:hover {
+            background-color: #777;
+        }
+
+        .content {
+            margin-top: 70px; /* Altura de la barra de navegación */
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar .search-bar input {
+                max-width: 200px;
+            }
+
+            .navbar .login-button {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar .search-bar {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .navbar .search-bar input {
+                width: calc(100% - 40px);
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#">
+                <img src="/static/img/argentina.png" alt="Logo">
+                <span>Ejemplo</span>
+            </a>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar...">
+        </div>
+        <button class="login-button">Iniciar Sesión</button>
+    </div>
+
+    <div class="content">
+        <!-- Aquí va el contenido de la página -->
+        <h1>Bienvenido al Portal Deportivo</h1>
+        <p>Contenido de ejemplo...</p>
+    </div>
+</body>
+</html>

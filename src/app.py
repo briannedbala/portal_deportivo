@@ -62,25 +62,19 @@ def teams():
     return render_template('prueba_seleccion.html')
 
 
-def obtener_jugadores():
-    conn = sqlite3.connect('jugadores.db')  # Cambia el nombre de tu base de datos si es necesario
-    cursor = conn.cursor()
-    cursor.execute("SELECT name, position, age, height, weight, nationality FROM user")
-    jugadores = cursor.fetchall()
-    conn.close()
+@app.route('/argentina_players')
+def argentina_players():
+    cur = db.connection.cursor()
+    cur.execute(
+        "SELECT name, position, age, height, weight, nationality FROM players")
+    jugadores = cur.fetchall()
+    cur.close()
 
-    jugadores_list = []
-    for jugador in jugadores:
-        jugadores_list.append({
-            'name': jugador[0],
-            'position': jugador[1],
-            'age': jugador[2],
-            'height': jugador[3],
-            'weight': jugador[4],
-            'nationality': jugador[5]
-        })
-    return jugadores_list
+    return render_template('/argentina_players.html', jugadores=jugadores)
 
+@app.route('/argentina_home')
+def argentina_home():
+    return render_template('argentina_home.html')
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
