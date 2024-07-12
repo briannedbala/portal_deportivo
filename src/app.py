@@ -27,7 +27,7 @@ def login():
         try:
             if user:
                 # Ingresar flash
-                return redirect('/teams')
+                return redirect('/')
             else:
                 # Ingresar flash
                 return redirect('Error')
@@ -57,11 +57,6 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/teams')
-def teams():
-    return render_template('prueba_seleccion.html')
-
-
 @app.route('/argentina_players')
 def argentina_players():
     cur = db.connection.cursor()
@@ -72,9 +67,6 @@ def argentina_players():
 
     return render_template('/argentina_players.html', jugadores=jugadores)
 
-@app.route('/argentina_home')
-def argentina_home():
-    return render_template('argentina_home.html')
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])

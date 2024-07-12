@@ -3,47 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
+    <title>Selecciones de Fútbol</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
             font-family: Arial, sans-serif;
-            background-color: white;
+            text-align: center;
+            background-color: #f8f8ff;
         }
-        h1 {
-            color: white;
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            /* font-family: 'Courier', sans-serif; */
+            font-size: 20px;
         }
-        .button-container {
-            margin-top: 20px;
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
         }
-        .button-container button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+        .team {
+            margin: 20px;
+            text-align: center;
+        }
+        .team img {
+            width: 150px;
+            height: 150px;
             cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .publicity {
+            width: auto;
+            height: auto;
+        }
+
+        .header{
+        background-color: #99cbff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100px;
+        padding: 5px 10%;
+        }
+
+        .header .logo{
+            cursor: pointer;
+        }
+
+        .header .logo img{
+            height: 100px;
+            width: auto;
+            transition: all 0.3s;
+        }
+
+        .header .logo img:hover{
+            transform: scale(1.1);
+        }
+
+        .header .nav-links{
+            list-style: none;
+        }
+
+        .header .nav-links li{
+            display: inline-block;
+            padding: 0 20px;    
+        }
+
+        .header .nav-links li:hover{
+            transform: scale(1.1);
+        }
+
+        .header .nav-links a{
+            font-size: 50px;
+            color: #eceff1;
+            text-decoration: none;    
+        }
+
+        .header .nav-links li a:hover{
+            color: #ffbc0e;
+        }
+
+        .header .btn button{
+            font-weight: 700;
+            color: #1b3039;
+            padding: 9px 25px;
+            background: #eceff1;
             border: none;
-            border-radius: 5px;
-            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease 0s;
         }
-        .login-button {
-            background-color: #007bff;
+
+        .header .btn button:hover{
+            background-color: #e2f1f8;
+            color: #ffbc0e;
+            transform: scale(1.1);
         }
-        .register-button {
-            background-color: #28a745;
+        
+        .tira-header{
+            background-color: #abccf2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 10vh;
         }
-    </style>
+
+        .tira-header ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .tira-header li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .tira-header a{
+            text-decoration: none;
+            color:blacks;
+        }
+
+        .tira-header a:hover {
+            text-decoration: none;
+            transform: scale(1.1);
+        }
+
+        .noticias-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        }
+
+        .noticia {
+            background-color: white;
+            margin: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .noticia img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .noticia h2 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .noticia p {
+            font-size: 1em;
+            color: #555;
+        }
+</style>
+
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+    </script>
+
 </head>
+
 <body>
-    <p><img src="/static/img/copa_america_logo.jpg" alt="logo"></p>
-    <h1 style="color: #007bff;">Portal de Estadísticas Deportivas</h1>
-    <div class="button-container">
-        <button class="login-button" onclick="window.location.href='/login'">Iniciar Sesión</button>
-        <button class="register-button" onclick="window.location.href='/register'">Registrarse</button>
+
+    <header>
+        <div class="publicity">
+            <a href="https://www.betano.bet.ar/en/">
+                <img src="/static/img/publicidad.jpg" alt="publicidad">
+            </a>
+        </div>
+    </header>
+
+    <header class="header">
+        <!-- <div class="logo">
+            <img src="/static/img/copa_america_logo.jpg" alt="logo del portal">
+        </div> -->
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Barrilete cósmico times</a></li>
+            </ul>
+        </nav>
+        <a onclick="window.location.href='/login'" class="btn"><button>Ingresar</button></a>
+        <a onclick="window.location.href='/register'" class="btn"><button>Registarse</button></a>
+    </header>
+    
+    <div class="tira-header">
+        <div class="">
+            <section>
+                <ul>
+                    <li>
+                        <a href="">Noticias</a>
+                        <a href="">Copa America 2024</a>
+                        <a href="">Eurocopa 2024</a>
+                        <a href="">Seleccion Argentina</a>
+                        <a href="">Independiente Rivadavia</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
     </div>
+
+    <br><h1>Noticias</h1>
+
+    <div class="noticias-container">
+        <div class="noticia">
+            <img src="/static/img/noticia1.jpg" alt="Imagen 1">
+            <h2>Lamine Yamal: figura de la semifinal de la Eurocopa y la bendición</h2>
+            <p>El crack español la rompió contra Francia y su foto junto a Leo cuando apenas tenía meses de vida toma aún más valor.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia2.jpg" alt="Imagen 2">
+            <h2>España vs Francia, duelo de titanes en la Eurocopa 2024 | Este martes por una de las...</h2>
+            <p>El conjunto español llega como favorito luego de ganar todos sus partidos en el torneo. Los de Mbappé, más complicados. A qué hora y cómo ver por TV y streaming.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia3.jpg" alt="Imagen 3">
+            <h2>Hora y dónde ver el partido de Argentina vs. Canadá...</h2>
+            <p>Este encuentro definirá el próximo rival de la selección Colombia en el torneo de selecciones, bien sea en la final o en el partido por el tercer y cuarto puesto</p>
+        </div>
+    </div>
+
+    <br><h1>Equipos de la copa America</h1><br>
+
+    <div class="container">
+
+        <div class="team">
+            <!-- <a href="/argentina_home"> -->
+                <img src="/static/img/argentina.png" alt="Argentina">
+            </a>
+            <p>Argentina</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://www.afa.com.ar/es/')">Pag. oficial</button>
+                <button onclick="navigateTo('/argentina_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/argentina_players')">Jugadores</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <!-- <a href="https://www.fifa.com/es/associations/association/fra/"> -->
+                <img src="/static/img/brasil.png" alt="Brasil">
+            </a>
+            <p>Brasil</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://www.cbf.com.br/')">Pag. oficial</button>
+                <button onclick="navigateTo('/brasil_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/brasil_players')">Jugadores</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <!-- <a href="https://www.fifa.com/es/associations/association/bra/"> -->
+                <img src="/static/img/uruguay.png" alt="Uruguay">
+            </a>
+            <p>Uruguay</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://www.auf.org.uy/')">Pag. oficial</button>
+                <button onclick="navigateTo('/uruguay_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/uruguay_players')">Jugadores</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <!-- <a href="https://www.fifa.com/es/associations/association/arg/"> -->
+                <img src="/static/img/mexico.png" alt="Mexico">
+            </a>
+            <p>Mexico</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://miseleccion.mx/')">Pag. oficial</button>
+                <button onclick="navigateTo('/peru_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/peru_players')">Jugadores</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <!-- <a href="https://www.fifa.com/es/associations/association/ger/"> -->
+                <img src="/static/img/usa.png" alt="usa">
+            </a>
+            <p>Estados Unidos</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://www.ussoccer.com/')">Pag. oficial</button>
+                <button onclick="navigateTo('/chile_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/chile_players')">Jugadores</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <!-- <a href="https://www.fifa.com/es/associations/association/ger/"> -->
+                <img src="/static/img/canada.png" alt="Canada">
+            </a>
+            <p>Canada</p>
+            <div class="buttons">
+                <button onclick="navigateTo('https://canadasoccer.com/')">Pag. oficial</button>
+                <button onclick="navigateTo('/chile_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/chile_players')">Jugadores</button>
+            </div>
+        </div>
+    </div>
+
+    <h1>Eurocopa</h1>
+    <div class="noticias-container">
+        <div class="noticia">
+            <iframe width="300" height="150" src="https://www.youtube.com/embed/GOYWhf_dAcw?si=vqXf_nQZWK545Nku" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <h2>Lamine Yamal: figura de la semifinal de la Eurocopa y la bendición</h2>
+            <p>El crack español la rompió contra Francia y su foto junto a Leo cuando apenas tenía meses de vida toma aún más valor.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia2.jpg" alt="Imagen 2">
+            <h2>España vs Francia, duelo de titanes en la Eurocopa 2024 | Este martes por una de las...</h2>
+            <p>El conjunto español llega como favorito luego de ganar todos sus partidos en el torneo. Los de Mbappé, más complicados. A qué hora y cómo ver por TV y streaming.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia3.jpg" alt="Imagen 3">
+            <h2>Hora y dónde ver el partido de Argentina vs. Canadá...</h2>
+            <p>Este encuentro definirá el próximo rival de la selección Colombia en el torneo de selecciones, bien sea en la final o en el partido por el tercer y cuarto puesto</p>
+        </div>
+    </div>
+
+    <h1>Seleccion Argentina</h1>
+
+    <h1>Independiente Rivadavia</h1>
+
 </body>
 </html>
