@@ -3,89 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Jugadores</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <h2>Lista de Jugadores</h2>
-        <table id="tablaJugadores">
-            <thead>
-                <tr>
-                    <th class="sortable" onclick="ordenarTabla(0)">Nombre</th>
-                    <th class="sortable" onclick="ordenarTabla(1)">Posición</th>
-                    <th class="sortable" onclick="ordenarTabla(2)">Edad</th>
-                    <th class="sortable" onclick="ordenarTabla(3)">Altura</th>
-                    <th class="sortable" onclick="ordenarTabla(4)">Peso</th>
-                    <th class="sortable" onclick="ordenarTabla(5)">Nacionalidad</th>
-                </tr>
-            </thead>
-            <tbody id="jugadoresBody">
-                {% for jugador in jugadores %}
-                <tr>
-                    <td>{{ jugador[0] }}</td>
-                    <td>{{ jugador[1] }}</td>
-                    <td>{{ jugador[2] }}</td>
-                    <td>{{ jugador[3] }} cm</td>
-                    <td>{{ jugador[4] }} kg</td>
-                    <td>{{ jugador[5] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
+    <title>Plantilla de Argentina</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function ordenarTabla(n) {
-            const table = document.getElementById('tablaJugadores');
-            let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            switching = true;
-            dir = "asc"; 
-            while (switching) {
-                switching = false;
-                rows = table.rows;
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[n];
-                    y = rows[i + 1].getElementsByTagName("TD")[n];
-                    if (dir == "asc") {
-                        if (n === 2 || n === 3 || n === 4) {
-                            if (parseInt(x.innerHTML) > parseInt(y.innerHTML)) {
-                                shouldSwitch = true;
-                                break;
-                            }
-                        } else {
-                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                    } else if (dir == "desc") {
-                        if (n === 2 || n === 3 || n === 4) {
-                            if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
-                                shouldSwitch = true;
-                                break;
-                            }
-                        } else {
-                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                                shouldSwitch = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-                if (shouldSwitch) {
-                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                    switching = true;
-                    switchcount++;
-                } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
-                        switching = true;
-                    }
+        $(document).ready(function() {
+            $('th').click(function(){
+                var table = $(this).parents('table').eq(0)
+                var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+                this.asc = !this.asc
+                if (!this.asc){rows = rows.reverse()}
+                for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+            })
+            function comparer(index) {
+                return function(a, b) {
+                    var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                    return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
                 }
             }
-        }
+            function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+        })
     </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            cursor: pointer;
+            background-color: #f2f2f2;
+        }
+
+        th:hover {
+            background-color: #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jugadores de Argentina</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre Completo</th>
+                <th>Edad</th>
+                <th>Altura</th>
+                <th>Nacionalidad</th>
+                <th>Posición</th>
+                <th>Pierna</th>
+                <th>Goles</th>
+                <th>Asistencias</th>
+                <th>Tarjetas Amarillas</th>
+                <th>Tarjetas Rojas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='argentina/' + jugador['image']) }}" alt="{{ jugador['fullname'] }}" width="100"></td>
+                <td>{{ jugador['fullname'] }}</td>
+                <td>{{ jugador['age'] }}</td>
+                <td>{{ jugador['height'] }}</td>
+                <td>{{ jugador['nationality'] }}</td>
+                <td>{{ jugador['position'] }}</td>
+                <td>{{ jugador['foot'] }}</td>
+                <td>{{ jugador['goal'] }}</td>
+                <td>{{ jugador['asis'] }}</td>
+                <td>{{ jugador['yellow_card'] }}</td>
+                <td>{{ jugador['red_card'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

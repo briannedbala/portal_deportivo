@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .title {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .box {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+
+        .box h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title">
+        <h1>Estadísticas de la Selección Mexicana en la Copa America 2024</h1>
+    </div>
+    <br><br>
+    <div class="container">
+        <div class="box">
+            <h2>Partidos Jugados</h2>
+            <p>{{ estadisticas[1] }}</p>
+        </div>
+        <div class="box">
+            <h2>Partidos Ganados</h2>
+            <p>{{ estadisticas[2] }}</p>
+        </div>
+        <div class="box">
+            <h2>Partidos Perdidos</h2>
+            <p>{{ estadisticas[3] }}</p>
+        </div>
+        <div class="box">
+            <h2>Partidos Empatados</h2>
+            <p>{{ estadisticas[4] }}</p>
+        </div>
+        <div class="box">
+            <h2>Goles a favor</h2>
+            <p>{{ estadisticas[5] }}</p>
+        </div>
+        <div class="box">
+            <h2>Goles en contra</h2>
+            <p>{{ estadisticas[6] }}</p>
+        </div>
+</body>
+
+</html>

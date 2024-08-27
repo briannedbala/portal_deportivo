@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciones de Fútbol</title>
+    <title>Diario deportivo</title>
+    <script src="https://kit.fontawesome.com/eb1f191a2d.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             text-align: center;
-            background-color: #f8f8ff;
-        }
-        *{
+            background-color: #97d2eb;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            /* font-family: 'Courier', sans-serif; */
             font-size: 20px;
         }
+
         .container {
             display: flex;
             justify-content: center;
@@ -24,10 +24,12 @@
             flex-wrap: wrap;
             padding: 20px;
         }
+
         .team {
             margin: 20px;
             text-align: center;
         }
+
         .team img {
             width: 150px;
             height: 150px;
@@ -35,89 +37,91 @@
             display: block;
             margin: 0 auto;
         }
+
         .buttons {
             margin-top: 10px;
         }
+
         .buttons button {
             margin: 5px;
             padding: 10px;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
         }
 
-        .publicity {
-            width: auto;
-            height: auto;
+        .header {
+            background-color: #347289;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            padding: 5px 10%;
         }
 
-        .header{
-        background-color: #99cbff;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100px;
-        padding: 5px 10%;
-        }
-
-        .header .logo{
+        .header .logo {
             cursor: pointer;
+            margin-right: auto;
         }
 
-        .header .logo img{
-            height: 100px;
+        .header .logo img {
+            height: 70px;
             width: auto;
             transition: all 0.3s;
         }
 
-        .header .logo img:hover{
-            transform: scale(1.1);
+        .header .logo img:hover {
+            transform: scale(1.2);
         }
 
-        .header .nav-links{
+        .header .nav-links {
+            left: 50%;
+            transform: translateX(-100%);
+            font-size: 50px;
             list-style: none;
         }
 
-        .header .nav-links li{
+        .header .nav-links li {
             display: inline-block;
-            padding: 0 20px;    
+            padding: 0 20px;
         }
 
-        .header .nav-links li:hover{
-            transform: scale(1.1);
+        .header .nav-links li:hover {
+            transform: scale(1.2);
         }
 
-        .header .nav-links a{
-            font-size: 50px;
-            color: #eceff1;
-            text-decoration: none;    
+        .header .nav-links a {
+            font-size: 700;
+            color: black;
+            text-decoration: none;
         }
 
-        .header .nav-links li a:hover{
-            color: #ffbc0e;
+        .header .nav-links li a:hover {
+            color: #97d2eb;
         }
 
-        .header .btn button{
+        .header .btn button {
             font-weight: 700;
-            color: #1b3039;
+            color: black;
             padding: 9px 25px;
-            background: #eceff1;
+            background: #97d2eb;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease 0s;
         }
 
-        .header .btn button:hover{
-            background-color: #e2f1f8;
-            color: #ffbc0e;
-            transform: scale(1.1);
+        .header .btn button:hover {
+            background-color: #97d2eb;
+            color: black;
+            transform: scale(1.2);
         }
-        
-        .tira-header{
-            background-color: #abccf2;
+
+        .tira-header {
+            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-wrap: wrap;
             height: 10vh;
         }
 
@@ -126,16 +130,17 @@
             padding: 0;
         }
 
-        .tira-header li{
+        .tira-header li {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             align-items: center;
             gap: 20px;
         }
 
-        .tira-header a{
+        .tira-header a {
             text-decoration: none;
-            color:blacks;
+            color: black;
         }
 
         .tira-header a:hover {
@@ -144,10 +149,10 @@
         }
 
         .noticias-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 5px;
         }
 
         .noticia {
@@ -175,7 +180,84 @@
             font-size: 1em;
             color: #555;
         }
-</style>
+
+        .noticia a {
+            text-decoration: none;
+            color: #1b3039;
+        }
+
+        .footer {
+            position: relative;
+            width: auto;
+            background: #347289;
+            min-height: 100px;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px 5px;
+            flex-wrap: wrap;
+        }
+
+        .icon-elem {
+            list-style: none;
+        }
+
+        .icon {
+            color: white;
+            font-size: 32px;
+            display: inline-block;
+            margin: 0 10px;
+            transition: 0.5s;
+        }
+
+        .icon:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .menu-elem {
+            list-style: none;
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 5px 10px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    </style>
 
     <script>
         function navigateTo(url) {
@@ -187,70 +269,135 @@
 
 <body>
 
-    <header>
-        <div class="publicity">
-            <a href="https://www.betano.bet.ar/en/">
-                <img src="/static/img/publicidad.jpg" alt="publicidad">
-            </a>
+    <header class="header">
+        <div class="logo">
+            <img src="../static/img/logo.png" alt="">
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="">Cuervo</a></li>
+            </ul>
+        </nav>
+        <div class="btn">
+            <a onclick="window.location.href='/login'"><button>Ingresar</button></a>
+            <a onclick="window.location.href='/register'"><button>Registarse</button></a>
         </div>
     </header>
 
-    <header class="header">
-        <!-- <div class="logo">
-            <img src="/static/img/copa_america_logo.jpg" alt="logo del portal">
-        </div> -->
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#">Barrilete cósmico times</a></li>
-            </ul>
-        </nav>
-        <a onclick="window.location.href='/login'" class="btn"><button>Ingresar</button></a>
-        <a onclick="window.location.href='/register'" class="btn"><button>Registarse</button></a>
-    </header>
-    
     <div class="tira-header">
         <div class="">
             <section>
                 <ul>
                     <li>
-                        <a href="">Noticias</a>
-                        <a href="">Copa America 2024</a>
-                        <a href="">Eurocopa 2024</a>
-                        <a href="">Seleccion Argentina</a>
-                        <a href="">Independiente Rivadavia</a>
+                        <a href="#Noticias">Noticias</a>
+                        <a href="#CopaAmerica">Copa America 2024</a>
+                        <a href="#Eurocopa">Eurocopa 2024</a>
+                        <a href="#TeamsCopaAmerica">Equipos de la copa America</a>
+                        <a href="#Multimedia">Multimedia</a>
                     </li>
                 </ul>
             </section>
         </div>
     </div>
 
-    <br><h1>Noticias</h1>
+    <br>
+    <h1 id="Noticias">Noticias</h1>
 
     <div class="noticias-container">
         <div class="noticia">
             <img src="/static/img/noticia1.jpg" alt="Imagen 1">
-            <h2>Lamine Yamal: figura de la semifinal de la Eurocopa y la bendición</h2>
-            <p>El crack español la rompió contra Francia y su foto junto a Leo cuando apenas tenía meses de vida toma aún más valor.</p>
+            <a
+                href="https://www.ole.com.ar/futbol-internacional/espana/yamal-bendicion-messi-foto-espana-eurocopa_0_XVqqi88mz3.html">
+                <h2>Lamine Yamal: figura de la semifinal de la Eurocopa y la bendición</h2>
+            </a>
+            <p>El crack español la rompió contra Francia y su foto junto a Leo cuando apenas tenía meses de vida toma
+                aún más valor.</p>
         </div>
         <div class="noticia">
             <img src="/static/img/noticia2.jpg" alt="Imagen 2">
-            <h2>España vs Francia, duelo de titanes en la Eurocopa 2024 | Este martes por una de las...</h2>
-            <p>El conjunto español llega como favorito luego de ganar todos sus partidos en el torneo. Los de Mbappé, más complicados. A qué hora y cómo ver por TV y streaming.</p>
+            <a
+                href="https://www.ole.com.ar/independiente-mza/independiente-rivadavia-mendoza-gimnasia-esgrima-sebastian-villa_0_WUxYZIzYXB.html">
+                <h2>Independiente Rivadavia fue más que Gimnasia y ganó 1-0 en Mendoza</h2>
+            </a>
+            <p>Con gol de Lautaro Ríos tras una asistencia de Sebastián Villa, que volvió al fútbol argentino, la Lepra
+                venció al Lobo.</p>
         </div>
         <div class="noticia">
             <img src="/static/img/noticia3.jpg" alt="Imagen 3">
-            <h2>Hora y dónde ver el partido de Argentina vs. Canadá...</h2>
-            <p>Este encuentro definirá el próximo rival de la selección Colombia en el torneo de selecciones, bien sea en la final o en el partido por el tercer y cuarto puesto</p>
+            <a href="https://www.ole.com.ar/messi/messi-antonela-vacaciones_0_6JPcGbNaif.html">
+                <h2>Video: qué cumbia escucha Messi con mates con Antonela</h2>
+            </a>
+            <p>La pareja del rosarino subió un video de la Pulga relajándose.</p>
         </div>
     </div>
 
-    <br><h1>Equipos de la copa America</h1><br>
+    <h1 id="CopaAmerica">Copa America</h1>
+
+    <div class="noticias-container">
+        <div class="noticia">
+            <!-- <iframe width="300" height="150" src="https://www.youtube.com/embed/GOYWhf_dAcw?si=vqXf_nQZWK545Nku" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+            <img src="/static/img/noticia_ca_1.jpg" alt="Imagen 1">
+            <a
+                href="https://www.ole.com.ar/copa-america/hora-argentina-colombia-final-copa-america-2024-hoy-vivo_0_bCWpLYcseK.html">
+                <h2>¡Argentina es bicampeona de la Copa América!</h2>
+            </a>
+            <p>Con un golazo de Lautaro Martínez, la Selección sacó adelante un partidazo ante Colombia para levantar un
+                nuevo título.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia_ca_2.jpg" alt="Imagen 2">
+            <a href="">
+                <h2>Escándalo: piñas de jugadores uruguayos con hinchas colombianos en una tribuna</h2>
+            </a>
+            <p>Darwin Núñez y otros compañeros se agarraron a golpes con fanáticos del rival. "Nuestras familias corren
+                peligro, esto es un desastre", dijo Giménez.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia_ca_3.jpg" alt="Imagen 3">
+            <a href="">
+                <h2>La revista de la Copa América: "bi are the champions, Olé"</h2>
+            </a>
+            <p>Argentina es bicampeón y Olé presenta una publicación para el recuerdo. Eternos. Pedila en tu kiosco
+                desde este miércoles.</p>
+        </div>
+    </div>
+
+    <h1 id="Eurocopa">Eurocopa</h1>
+
+    <div class="noticias-container">
+        <div class="noticia">
+            <img src="/static/img/noticia_eu_1.jpg" alt="Imagen 1">
+            <a
+                href="https://www.ole.com.ar/futbol-internacional/espana-inglaterra-hora-ver-vivo-final-eurocopa-2024_0_fF2DKQZnMG.html">
+                <h2>España campeona y récord: venció a Inglaterra y levantó su cuarta Eurocopa</h2>
+            </a>
+            <p>La Roja se impuso por 2 a 1 y se convirtió en el máximo ganador histórico de la Euro.</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia_eu_2.jpg" alt="Imagen 2">
+            <a
+                href="https://www.ole.com.ar/futbol-internacional/toni-kroos-declaraciones-polemica-mano-cucurella-alemania-espana-eurocopa_0_GZoI5uKmoK.html">
+                <h2>El descargo de Toni Kroos por la mano de Cucurella: "Me he contenido hasta hoy"</h2>
+            </a>
+            <p>El alemán habló sobre la controversial jugada que pudo haber cambiado el desenlace del partido entre
+                Alemania y España, en la Eurocopa</p>
+        </div>
+        <div class="noticia">
+            <img src="/static/img/noticia_eu_3.jpg" alt="Imagen 3">
+            <a
+                href="https://www.ole.com.ar/usa/futbol-internacional/violencia-eurocopa-serbia-inglaterra-albania-arrestos_0_avD61bH0Eg.html">
+                <h2>Violencia en la Eurocopa: enfrentamientos en la calle entre serbios, ingleses y albaneses</h2>
+            </a>
+            <p>Aficionados de Inglaterra, Serbia y Albania se enfrentaron violentamente en Gelsenkirchen.</p>
+        </div>
+    </div>
+
+    <h1 id="TeamsCopaAmerica">Equipos de la copa America</h1>
 
     <div class="container">
 
         <div class="team">
-            <!-- <a href="/argentina_home"> -->
-                <img src="/static/img/argentina.png" alt="Argentina">
+            <img src="/static/img/argentina.png" alt="Argentina">
             </a>
             <p>Argentina</p>
             <div class="buttons">
@@ -261,8 +408,7 @@
         </div>
 
         <div class="team">
-            <!-- <a href="https://www.fifa.com/es/associations/association/fra/"> -->
-                <img src="/static/img/brasil.png" alt="Brasil">
+            <img src="/static/img/brasil.png" alt="Brasil">
             </a>
             <p>Brasil</p>
             <div class="buttons">
@@ -273,8 +419,7 @@
         </div>
 
         <div class="team">
-            <!-- <a href="https://www.fifa.com/es/associations/association/bra/"> -->
-                <img src="/static/img/uruguay.png" alt="Uruguay">
+            <img src="/static/img/uruguay.png" alt="Uruguay">
             </a>
             <p>Uruguay</p>
             <div class="buttons">
@@ -285,64 +430,104 @@
         </div>
 
         <div class="team">
-            <!-- <a href="https://www.fifa.com/es/associations/association/arg/"> -->
-                <img src="/static/img/mexico.png" alt="Mexico">
+            <img src="/static/img/mexico.png" alt="Mexico">
             </a>
             <p>Mexico</p>
             <div class="buttons">
                 <button onclick="navigateTo('https://miseleccion.mx/')">Pag. oficial</button>
-                <button onclick="navigateTo('/peru_stats')">Estadisticas</button>
-                <button onclick="navigateTo('/peru_players')">Jugadores</button>
+                <button onclick="navigateTo('/mexico_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/mexico_players')">Jugadores</button>
             </div>
         </div>
 
         <div class="team">
-            <!-- <a href="https://www.fifa.com/es/associations/association/ger/"> -->
-                <img src="/static/img/usa.png" alt="usa">
+            <img src="/static/img/usa.png" alt="usa">
             </a>
             <p>Estados Unidos</p>
             <div class="buttons">
                 <button onclick="navigateTo('https://www.ussoccer.com/')">Pag. oficial</button>
-                <button onclick="navigateTo('/chile_stats')">Estadisticas</button>
-                <button onclick="navigateTo('/chile_players')">Jugadores</button>
+                <button onclick="navigateTo('/usa_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/usa_players')">Jugadores</button>
             </div>
         </div>
 
         <div class="team">
-            <!-- <a href="https://www.fifa.com/es/associations/association/ger/"> -->
-                <img src="/static/img/canada.png" alt="Canada">
+            <img src="/static/img/canada.png" alt="Canada">
             </a>
             <p>Canada</p>
             <div class="buttons">
                 <button onclick="navigateTo('https://canadasoccer.com/')">Pag. oficial</button>
-                <button onclick="navigateTo('/chile_stats')">Estadisticas</button>
-                <button onclick="navigateTo('/chile_players')">Jugadores</button>
+                <button onclick="navigateTo('/canada_stats')">Estadisticas</button>
+                <button onclick="navigateTo('/canada_players')">Jugadores</button>
             </div>
         </div>
     </div>
 
-    <h1>Eurocopa</h1>
-    <div class="noticias-container">
-        <div class="noticia">
-            <iframe width="300" height="150" src="https://www.youtube.com/embed/GOYWhf_dAcw?si=vqXf_nQZWK545Nku" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <h2>Lamine Yamal: figura de la semifinal de la Eurocopa y la bendición</h2>
-            <p>El crack español la rompió contra Francia y su foto junto a Leo cuando apenas tenía meses de vida toma aún más valor.</p>
-        </div>
-        <div class="noticia">
-            <img src="/static/img/noticia2.jpg" alt="Imagen 2">
-            <h2>España vs Francia, duelo de titanes en la Eurocopa 2024 | Este martes por una de las...</h2>
-            <p>El conjunto español llega como favorito luego de ganar todos sus partidos en el torneo. Los de Mbappé, más complicados. A qué hora y cómo ver por TV y streaming.</p>
-        </div>
-        <div class="noticia">
-            <img src="/static/img/noticia3.jpg" alt="Imagen 3">
-            <h2>Hora y dónde ver el partido de Argentina vs. Canadá...</h2>
-            <p>Este encuentro definirá el próximo rival de la selección Colombia en el torneo de selecciones, bien sea en la final o en el partido por el tercer y cuarto puesto</p>
-        </div>
-    </div>
+    <h1 id="Multimedia">Multimedia</h1><br>
 
-    <h1>Seleccion Argentina</h1>
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/IlNC35grHRY?si=2r8npTlcdsruT4Di"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <img src="../static/img/multimedia1.jpg" alt="">
+    <iframe width="640" height="360" src="https://www.youtube.com/embed/tQ7X_aobIoA?si=lqWpsxNjPvlkfLDa"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <img src="../static/img/multimedia2.jpg" alt="">
 
-    <h1>Independiente Rivadavia</h1>
+    <!-- footer -->
+
+    <br><br>
+    <footer class="footer">
+        <ul class="social-icon">
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Inicio </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Equipo </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Contacto </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Video </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Sobre Nosotros </a>
+            </li>
+        </ul>
+        <p class="text">2024 | Todos los derechos reservados</p>
+    </footer>
+
 
 </body>
+
 </html>

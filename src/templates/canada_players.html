@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Canada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('th').click(function(){
+                var table = $(this).parents('table').eq(0)
+                var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+                this.asc = !this.asc
+                if (!this.asc){rows = rows.reverse()}
+                for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+            })
+            function comparer(index) {
+                return function(a, b) {
+                    var valA = getCellValue(a, index), valB = getCellValue(b, index)
+                    return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+                }
+            }
+            function getCellValue(row, index){ return $(row).children('td').eq(index).text() }
+        })
+    </script>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            cursor: pointer;
+            background-color: #f2f2f2;
+        }
+
+        th:hover {
+            background-color: #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Jugadores de Canada</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Nombre Completo</th>
+                <th>Edad</th>
+                <th>Altura</th>
+                <th>Nacionalidad</th>
+                <th>Posición</th>
+                <th>Pierna</th>
+                <th>Goles</th>
+                <th>Asistencias</th>
+                <th>Tarjetas Amarillas</th>
+                <th>Tarjetas Rojas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for jugador in jugadores %}
+            <tr>
+                <td><img src="{{ url_for('static', filename='canada/' + jugador['image']) }}" alt="{{ jugador['fullname'] }}" width="100"></td>
+                <td>{{ jugador['fullname'] }}</td>
+                <td>{{ jugador['age'] }}</td>
+                <td>{{ jugador['height'] }}</td>
+                <td>{{ jugador['nationality'] }}</td>
+                <td>{{ jugador['position'] }}</td>
+                <td>{{ jugador['foot'] }}</td>
+                <td>{{ jugador['goal'] }}</td>
+                <td>{{ jugador['asis'] }}</td>
+                <td>{{ jugador['yellow_card'] }}</td>
+                <td>{{ jugador['red_card'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
