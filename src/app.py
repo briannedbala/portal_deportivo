@@ -52,8 +52,9 @@ def register():
             db.connection.commit()
             cur.close()
             flash('Registro exitoso', 'succes')
+
         except Exception as e:
-            flash(f'Error al registrar el usuario {e}')
+            return jsoniify({f'Error al registrar el usuario {str(e)}'}),500
             db.connection.rollback()
 
     return render_template('register.html')
